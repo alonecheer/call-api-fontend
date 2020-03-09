@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import * as axios from 'axios'
-
+import Link from 'next/link'
 export default class View extends Component {
     state = {
         form001: [],
@@ -31,6 +31,9 @@ export default class View extends Component {
                 Database
                 <br></br>
                 <button type="button" onClick={this.handleVies}>View</button>
+                <Link href="/">
+            <a>Homepage</a>
+          </Link>
                 {form001.o_id}
                 {form001.o_no}
                 {form001.o_committee1}
