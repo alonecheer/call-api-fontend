@@ -1,40 +1,39 @@
 import React, { Component } from 'react'
+import * as axios from 'axios'
 
 export default class View extends Component {
     state = {
-        form001s: [],
-        isLoading: true
+        form001: [],
     }
-    componentDidMount = () => {
+    handleVies = () => {
+        console.log("views")
         this.setState(
-            {
-                isLoading: true
-            },
-            () => {
-                axios
-                    .get('http://localhost:3001/api/form001')
-                    .then(res => {
-                        const { form001s } = res.data
-                        this.setState({ form001s })
-                    })
-                    .catch(err => {
-                        alert('ไม่สามารถโหลดข้อมูลได้!')
-                    })
-                    .finally(() => {
-                        this.setState({ isLoading: false })
-                    })
-            }
+            axios
+                .get('http://localhost:3001/api/form001')
+                .then(res => {
+                    const { form001 } = res.data
+                    this.setState({ form001 })
+                })
+                .catch(err => {
+                    alert('ไม่สามารถโหลดข้อมูลได้!')
+                })
+                .finally(() => {
+                    this.setState({ isLoading: false })
+                })
+                
         )
+        console.log("end views")
     }
     render() {
-        const { form001s, isLoading } = this.state
+        const { form001 } = this.state
         return (
             <div>
-                <tr>
-                    <td>{form001s.o_id}</td>
-                    <td>{form001s.o_no}</td>
-                    <td>{form001s.o_committee1}</td>
-                </tr>
+                Database
+                <br></br>
+                <button type="button" onClick={this.handleVies}>View</button>
+                {form001.o_id}
+                {form001.o_no}
+                {form001.o_committee1}
             </div>
         )
     }
