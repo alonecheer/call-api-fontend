@@ -8,7 +8,7 @@ export default class Homepage extends Component {
 		form001: {
 			o_id: 0,
 			o_no: '',
-			o_committee1: 0,
+			o_committee1: '',
 
 		},
 		isLoading: false
