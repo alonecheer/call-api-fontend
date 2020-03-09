@@ -3,7 +3,7 @@ import * as axios from 'axios'
 import Link from 'next/link'
 export default class View extends Component {
     state = {
-        form001: [],
+        form001s: [],
     }
     handleVies = () => {
         console.log("views")
@@ -11,21 +11,17 @@ export default class View extends Component {
             axios
                 .get('http://localhost:3001/api/form001')
                 .then(res => {
-                    const { form001 } = res.data
-                    this.setState({ form001 })
+                    const { form001s } = res.data
+                    this.setState({ form001s })
                 })
                 .catch(err => {
                     alert('ไม่สามารถโหลดข้อมูลได้!')
-                })
-                .finally(() => {
-                    this.setState({ isLoading: false })
-                })
-                
+                })             
         )
         console.log("end views")
     }
     render() {
-        const { form001 } = this.state
+        const { form001s } = this.state
         return (
             <div>
                 Database
@@ -34,9 +30,14 @@ export default class View extends Component {
                 <Link href="/">
             <a>Homepage</a>
           </Link>
-                {form001.o_id}
-                {form001.o_no}
-                {form001.o_committee1}
+          {
+							form001s.length !== 0 &&
+							form001s.map(form001 => (
+								<tr>
+									<td>{form001.o_id}</td>
+									<td>{form001.o_no}</td>
+								</tr>
+							))}
             </div>
         )
     }
