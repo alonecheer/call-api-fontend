@@ -16,8 +16,9 @@ export default class View extends Component {
                 })
                 .catch(err => {
                     alert('ไม่สามารถโหลดข้อมูลได้!')
-                })             
+                })
         )
+        e.preventDefault()
         console.log("end views")
     }
     render() {
@@ -28,16 +29,19 @@ export default class View extends Component {
                 <br></br>
                 <button type="button" onClick={this.handleVies}>View</button>
                 <Link href="/">
-            <a>Homepage</a>
-          </Link>
-          {
-							form001s.length !== 0 &&
-							form001s.map(form001 => (
-								<tr>
-									<td>{form001.o_id}</td>
-									<td>{form001.o_no}</td>
-								</tr>
-							))}
+                    <a>Homepage</a>
+                </Link>
+                <div>
+                   {
+                    form001s.length !== 0 && form001s.map(form001 => (
+                        <tr>
+                            <td>{form001.o_id}</td>
+                            <td>{form001.updatedAt}</td>
+                            <td>{form001.createdAt}</td>
+                        </tr>
+                    ))} 
+                </div>
+                
             </div>
         )
     }
