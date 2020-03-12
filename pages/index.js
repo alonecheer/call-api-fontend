@@ -36,11 +36,12 @@ export default class Homepage extends Component {
     const { form001 } = this.state
     return (
       <div>
-        fdgdfg
-        
-        {form001.map(form001 => (
-        <li>{form001.o_purpose}</li>
-      ))}
+        Views
+        {form001.map(form001 => (<li>{form001.o_id}</li>))}
+        {form001.map(form001 => (<li>{form001.o_no }</li>))}
+        {form001.map(form001 => (<li>{form001.o_date }</li>))}
+        {form001.map(form001 => (<li>{form001.o_year }</li>))}
+        {form001.map(form001 => (<li>{form001.o_purpose}</li>))}
       </div>
     )
   }
